@@ -11,7 +11,7 @@ let elTemplate = document.querySelector("#template").content;
 
 // console.log(elTemplate)
 
-let sliceMovies = movies.slice(0, 50);
+let sliceMovies = movies.slice(0, 100);
 
 
 var newArrayNormolizeList = sliceMovies.map( (item, index, ) => {
@@ -52,7 +52,7 @@ function renderCategories(array) {
     
     let optionFragment = document.createDocumentFragment()
     
-    movieCategories.forEach(function (item) {
+    movieCategories.forEach((item) => {
         
         let newOption = document.createElement("option");
         
@@ -99,13 +99,13 @@ function renderMovies(array, box) {
 renderMovies(newArrayNormolizeList, elBox)
 
 
-let findMovies = function (title, minRating, genre) {
+let findMovies = function (titleMovie, minRating, genre) {
     
     let filterMovies = newArrayNormolizeList.filter(function (item) {
         
         var filterCategories = genre === 'All' || item.movie_categories.includes(genre);
         
-        return item.title.match(title) && item.movie_rating >= minRating && filterCategories
+        return item.title.match(titleMovie) && item.movie_rating >= minRating && filterCategories
     })
     
     return filterMovies
